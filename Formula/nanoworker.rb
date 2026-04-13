@@ -2,20 +2,56 @@ class Nanoworker < Formula
   desc "Nanomite distributed worker agent"
   homepage "https://github.com/nanomiteai/nanoworker"
   license :cannot_represent
-  version "0.1.1"
+  version "0.1.2"
 
   on_macos do
-    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.1/nanoworker_darwin_arm64.tar.gz"
-    sha256 "c0532e8f3b4b3e28ce68136e01b70b2807db169bf9896f71a59db1bb8a10cfb7"
+    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.2/nanoworker_darwin_arm64.tar.gz"
+    sha256 "ebe30e884c3b48cdb83462cf7b2e2bf07e89340dfc2cdfaf21cd85b44fabcd5f"
   end
 
   on_linux do
-    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.1/nanoworker_linux_arm64.tar.gz"
-    sha256 "a6c10f2d034b298661d935c75b695de9de7aca0f39791a0c54157b04e2efd5bf"
+    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.2/nanoworker_linux_arm64.tar.gz"
+    sha256 "ab7efbc42343e518bc29743ec6d81463cf74d4dcc50adc8e8ced1d34a57cae77"
   end
 
   def install
     bin.install "nanoworker"
+    etc.install "nanomite.yaml.sample" => "nanomite/nanomite.yaml.sample"
+  end
+
+  def post_install
+    (var/"log/nanomite").mkpath
+  end
+
+  service do
+    run [opt_bin/"nanoworker", "run"]
+    keep_alive true
+    log_path var/"log/nanomite/nanoworker.log"
+    error_log_path var/"log/nanomite/nanoworker.log"
+    working_dir var
+  end
+
+  def caveats
+    <<~EOS
+      To get started:
+
+      1. Copy the sample config and edit it:
+         mkdir -p ~/.config/nanomite
+         cp #{etc}/nanomite/nanomite.yaml.sample ~/.config/nanomite/nanomite.yaml
+         chmod 600 ~/.config/nanomite/nanomite.yaml
+
+      2. Set your server and token:
+         \$EDITOR ~/.config/nanomite/nanomite.yaml
+
+         Or use the token command:
+         nanoworker token set <your-worker-token>
+
+      3. Start the service:
+         brew services start nanoworker
+
+      Logs: #{var}/log/nanomite/nanoworker.log
+      Config: ~/.config/nanomite/nanomite.yaml
+    EOS
   end
 
   test do
