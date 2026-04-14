@@ -40,10 +40,7 @@ class Nanoworker < Formula
          cp #{etc}/nanomite/nanomite.yaml.sample ~/.config/nanomite/nanomite.yaml
          chmod 600 ~/.config/nanomite/nanomite.yaml
 
-      2. Set your server and token:
-         \$EDITOR ~/.config/nanomite/nanomite.yaml
-
-         Or use the token command:
+      2. Set your worker token (get it from the nanoweb UI under Workers):
          nanoworker token set <your-worker-token>
 
       3. Start the service:
