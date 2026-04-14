@@ -10,8 +10,14 @@ class Nanoworker < Formula
   end
 
   on_linux do
-    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.3/nanoworker_linux_arm64.tar.gz"
-    sha256 "0a7bbe99810848659b455daf177c3385e27a70e98d27adca3628a6a8db01f865"
+    on_arm do
+      url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.3/nanoworker_linux_arm64.tar.gz"
+      sha256 "0a7bbe99810848659b455daf177c3385e27a70e98d27adca3628a6a8db01f865"
+    end
+    on_intel do
+      url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.3/nanoworker_linux_amd64.tar.gz"
+      sha256 "5852dfd18deb0690b7b4e86d8151e5c7a95458970f3aa2e61dbed8dafd11bd06"
+    end
   end
 
   def install
