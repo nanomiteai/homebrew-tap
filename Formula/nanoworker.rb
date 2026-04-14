@@ -16,7 +16,7 @@ class Nanoworker < Formula
 
   def install
     bin.install "nanoworker"
-    etc.install "nanomite.yaml.sample" => "nanomite/nanomite.yaml.sample"
+    (etc/"nanomite").install "nanomite.yaml.sample"
   end
 
   def post_install
