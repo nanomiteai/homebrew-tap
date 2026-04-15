@@ -2,21 +2,21 @@ class Nanoworker < Formula
   desc "Nanomite distributed worker agent"
   homepage "https://github.com/nanomiteai/nanoworker"
   license :cannot_represent
-  version "0.1.6"
+  version "0.1.7"
 
   on_macos do
-    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.6/nanoworker_darwin_arm64.tar.gz"
-    sha256 "f8ea00fcbd1d730244489e653389797f475be4bdd501b8b77bb7e12aa1419d2d"
+    url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.7/nanoworker_darwin_arm64.tar.gz"
+    sha256 "bc27059ad66c2587dc81e923bd1887db9d0e60dc04a7d616cc55e00cefc43662"
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.6/nanoworker_linux_arm64.tar.gz"
-      sha256 "0f2b6b26e2a0091ffdda4ddb7f9767ecf178dc1ac4d31209418fc4854e1dd5ee"
+      url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.7/nanoworker_linux_arm64.tar.gz"
+      sha256 "640e5e48e8d8e86e14da4f2e9ae80dd34c9fc25ddc7da2d2f3f6972f49130d2e"
     end
     on_intel do
-      url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.6/nanoworker_linux_amd64.tar.gz"
-      sha256 "c099a0e0b8349bddedab77f42298f2ab8ad901f1016cc675adf9b5002fcdce70"
+      url "https://github.com/nanomiteai/nanoworker/releases/download/v0.1.7/nanoworker_linux_amd64.tar.gz"
+      sha256 "1642cd4ffc5d59504c741962936ff9299cb89479d1fe6c160b48f96e34299c62"
     end
   end
 
